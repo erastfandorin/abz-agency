@@ -1,2 +1,8 @@
 @import "./variables.scss";
+@import "./bem-blocks.scss";
 @import "./global.scss";
+
+@import "./components/loader.scss";
+@import "./components/header.scss";
+@import "./components/poster.scss";
+@import "./components/users.scss";

@@ -1,4 +1,8 @@
-// reset default styles
+// reset default styles and add general styles
+* {
+  box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
@@ -21,9 +25,9 @@ html, body {
   line-height: 1;
 }
 
-// add body styles
 body {
-  box-sizing: border-box;
+  min-width: 320px;
+  min-height: 100vh;
   font-family: $main-font;
   font-style: normal;
   font-weight: 400;
@@ -31,8 +35,6 @@ body {
   line-height: 26px;
   color: $text-color;
   background-color: $bg-color;
-  min-width: 320px;
-  min-height: 100vh;
 }
 input, textarea, select, button {
   font: inherit;
@@ -42,6 +44,7 @@ input, textarea, select, button {
   outline-color: $secondary-color;
   outline-offset: 1px;
  }
+
 // add media query
 section, header, footer {
   padding: 0 16px;
@@ -68,4 +71,16 @@ section, header, footer {
     margin: 0 auto;
     padding: 0;
   }
+}
+
+//app
+.wrapper {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.main {
+  margin-bottom: 100px;
 }

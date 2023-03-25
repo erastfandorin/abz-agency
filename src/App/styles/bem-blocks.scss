@@ -1,0 +1,110 @@
+.heading {
+  font-size: 40px;
+  line-height: 40px;
+  color: $text-color;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 100px;
+  padding: 9px 18px;
+  text-align: center;
+  line-height: 1;
+  color: $text-color;
+  text-decoration: none;
+  background-color: $primary-color;
+  border-radius: 80px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out 0s;
+
+  &:hover {
+    background-color: #FFE302;
+  }
+  &.btn-disable {
+    color: #FFFFFFDE;
+    background-color: #B4B4B4;
+  }
+}
+
+.input {
+  padding: 14px 16px;
+  color: #7E7E7E;
+  background: #F8F8F8;
+  border: 1px solid #D0CFCF;
+  border-radius: 4px;
+  outline: none;
+}
+.label {
+  position: absolute;
+  top: 20px;
+  left: 13px;
+  width: max-content;
+  height: min-content;
+  padding: 0 4px;
+  font-size: 16px;
+  color: #7E7E7E;
+  line-height: 1;
+  background-color: $bg-color;
+  transition: 0.2s all;
+}
+.input__helper-text {
+  position: absolute;
+  padding: 4px 0 0 16px;
+  color: #7e7e7e;
+  font-size: 12px;
+  line-height: 1.3;
+
+  max-height: 44px;
+  overflow: hidden;
+}
+
+.input:focus ~ .label,
+.input:not(:placeholder-shown).input:not(:focus) ~ .label {
+  top: -6px;
+  font-size: 12px;
+}
+
+.input-error {
+  & input {
+    border: 1px solid #CB3D40;
+  }
+
+  & label {
+    color: #CB3D40;
+  }
+  & label ~ .input__helper-text {
+    color: #CB3D40;
+  }
+}
+
+// tooltip
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  opacity: .40;
+  background-color: $text-color;
+  color: #fff;
+  text-align: center;
+  word-break: break-all;
+  border-radius: 4px;
+  padding: 3px 16px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -50%;
+  transition: all 0.3s ease-in-out;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  transition: .3s linear;
+}

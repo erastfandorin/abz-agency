@@ -1,0 +1,34 @@
+.poster {
+  padding-top: 40px;
+  padding-bottom: 71px;
+  margin-bottom: 140px;
+  background: no-repeat url("./src/App/assets/img/poster-bg-small.png") center/cover;
+  text-align: center;
+  color: #ffffff;
+
+  @media (min-width: $tablet-width) {
+    padding-top: 89px;
+    padding-bottom: 88px;
+  }
+  @media (min-width: $desktop-width) {
+    padding-top: 164px;
+    padding-bottom: 164px;
+  }
+  @media (min-width: $large-desktop-width) {
+    background: no-repeat url("./src/App/assets/img/poster-bg.png") center/cover;
+  }
+}
+.poster__wrapper {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.poster__heading {
+  margin-bottom: 21px;
+  color: #ffffff;
+}
+.poster__text {
+  margin-bottom: 32px;
+}
