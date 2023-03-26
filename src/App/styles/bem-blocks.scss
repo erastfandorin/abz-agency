@@ -19,19 +19,19 @@
   transition: background-color 0.3s ease-in-out 0s;
 
   &:hover {
-    background-color: #FFE302;
+    background-color: #ffe302;
   }
-  &.btn-disable {
-    color: #FFFFFFDE;
-    background-color: #B4B4B4;
+  &.btn--disable {
+    color: #ffffffde;
+    background-color: #b4b4b4;
   }
 }
 
 .input {
   padding: 14px 16px;
-  color: #7E7E7E;
-  background: #F8F8F8;
-  border: 1px solid #D0CFCF;
+  color: #7e7e7e;
+  background: #f8f8f8;
+  border: 1px solid #d0cfcf;
   border-radius: 4px;
   outline: none;
 }
@@ -43,7 +43,7 @@
   height: min-content;
   padding: 0 4px;
   font-size: 16px;
-  color: #7E7E7E;
+  color: #7e7e7e;
   line-height: 1;
   background-color: $bg-color;
   transition: 0.2s all;
@@ -67,14 +67,14 @@
 
 .input-error {
   & input {
-    border: 1px solid #CB3D40;
+    border: 2px solid #cb3d40;
   }
 
   & label {
-    color: #CB3D40;
+    color: $text-color;
   }
   & label ~ .input__helper-text {
-    color: #CB3D40;
+    color: #cb3d40;
   }
 }
 
@@ -86,7 +86,7 @@
 
 .tooltip .tooltip-text {
   visibility: hidden;
-  opacity: .40;
+  opacity: 0.4;
   background-color: $text-color;
   color: #fff;
   text-align: center;
@@ -106,5 +106,5 @@
 .tooltip:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
-  transition: .3s linear;
+  transition: 0.3s linear;
 }

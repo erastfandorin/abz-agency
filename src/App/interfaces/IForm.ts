@@ -4,6 +4,7 @@ export interface IFormFields {
   phone: string;
   position: string;
   photo: string | File;
+  [key: string]: string | File;
 }
 export interface IFormErrors {
   name: string;
@@ -11,11 +12,11 @@ export interface IFormErrors {
   phone: string;
   photo: string;
 }
+
+// export interface I
 export interface IPosition {
-  // id: number; name: string;
-  success: boolean;
-  message?: string;
-  positions?: { id: number; name: string }[];
+  id: number;
+  name: string;
 }
 
 export interface IUserView {
@@ -36,5 +37,5 @@ export interface IUsers {
   // success: boolean;
   // message?: string;
   lastPage: boolean;
-  users: [IUser];
+  users: IUser[];
 }

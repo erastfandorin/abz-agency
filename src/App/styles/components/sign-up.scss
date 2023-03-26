@@ -1,0 +1,111 @@
+.sign-up__heading {
+  margin-bottom: 50px;
+}
+.sign-up__form {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.sign-up__form-field-list {
+  margin-bottom: 49px;
+}
+.sign-up__form-field-list > li {
+  position: relative;
+  margin-bottom: 47px;
+
+  &:nth-child(3) {
+    margin-bottom: 44px;
+  }
+}
+.sign-up__input {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+// radio btns
+.sign-up__form-field-list > .select-position {
+  margin-bottom: 39px;
+}
+.select-position__heading {
+  margin-bottom: 9px;
+}
+.select-position__radio-btn-list li {
+  margin-bottom: 2px;
+}
+.select-position__radio-btn-list input {
+  position: absolute;
+  clip: rect(0 0 0 0);
+
+  &:checked ~ label::before {
+    background: radial-gradient($secondary-color 4px, transparent 5px);
+    border: 1px solid $secondary-color;
+  }
+  &:focus-visible ~ label {
+    color: #00bdd3;
+  }
+}
+.select-position__radio-btn-list label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 12px;
+    border-radius: 50%;
+    background: radial-gradient(transparent 4px, transparent 5px);
+    border: 1px solid #d0cfcf;
+    transition: all 0.15s;
+  }
+}
+
+// input file
+.sign-up__input-file {
+  color: transparent;
+  &::before {
+    content: "Upload";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 14px 15px;
+    color: $text-color;
+    border: 1px solid $text-color;
+    border-radius: 4px 0px 0px 4px;
+  }
+  &::file-selector-button {
+    background-color: transparent;
+    visibility: hidden;
+  }
+  &:focus::before {
+    border: 1px solid #00bdd3;
+  }
+}
+.input-error .sign-up__input-file::before {
+  border: 2px solid #cb3d40;
+}
+
+.sign-up__input-file-name {
+  position: absolute;
+  top: 16px;
+  left: 99px;
+  color: #7e7e7e;
+  pointer-events: none;
+
+  // style for long string
+  width: 66%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sign-up__form-btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.sign-up__form-sended-img {
+  display: block;
+  margin: 0 auto;
+}
