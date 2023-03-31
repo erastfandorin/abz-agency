@@ -1,7 +1,7 @@
 export const initialValues = {
   name: '',
   email: '',
-  phone: '+380',
+  phone: '',
   position: '',
   photo: '',
 };

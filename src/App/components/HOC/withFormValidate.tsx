@@ -21,28 +21,34 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
       setErrors({ ...formErrors, [name]: "" });
     };
 
-    const validateForm = (): boolean => {
-      return Object.keys(formErrors).reduce((sum, item) => sum && validateField(item, formFields[item]), true);
+    const validateForm = async (): Promise<boolean> => {
+      for (const item of Object.keys(formErrors)) {
+        const isValid = await validateField(item, formFields[item]);
+        if (!isValid) {
+          return false;
+        }
+      }
+      return true;
     };
 
-    const handleBlur = (e: React.FormEvent<HTMLInputElement>) => {
+    const handleBlur = async (e: React.FormEvent<HTMLInputElement>) => {
       const { value, name } = e.currentTarget;
       validateField(name, value);
     };
 
-    const validateField = (name: string, value: string | File): boolean => {
+    const validateField = async (name: string, value: string | File): Promise<boolean> => {
       if (!isNotEmptyValue(name, value)) {
         return false;
       }
 
       if (typeof value !== "string") {
-        return validatePhotoField(name, value);
+        return await validatePhotoField(name, value);
       } else {
         return validateTextField(name, value);
       }
     };
 
-    const validatePhotoField = (name: string, value: File) => {
+    const validatePhotoField = async (name: string, value: File) => {
       // photo type
       if (!["image/jpeg", "image/jpg"].includes(value.type)) {
         setErrors({
@@ -61,7 +67,7 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
         return false;
       }
       // photo resolution
-      const resolution = getResolutionFileImg(value);
+      const resolution = await getResolutionFileImg(value);
       const minResolution = 70;
       if (resolution.width < minResolution || resolution.height < minResolution) {
         setErrors({
@@ -104,7 +110,6 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
     };
 
     const isNotEmptyValue = (name: string, value: string | File) => {
-      console.log(value);
       if (!value) {
         setErrors({ ...formErrors, [name]: "field must not be empty" });
         return false;

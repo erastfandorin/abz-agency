@@ -1,13 +1,22 @@
 import { useState, useRef, useEffect } from "react";
 import coveImg from "../../../assets/img/photo-cover.svg";
 import { IUserView } from "../../../interfaces/IForm";
-import { formatPhoneNumber, getTextWidth } from "../../../helpers/utilities";
+import { formatPhoneNumber, getTextWidth, verifyImageURL } from "../../../helpers/utilities";
 
 function User({ photo, name, email, phone, position }: IUserView) {
-  const ref = useRef<HTMLLIElement>(null);
+  const [userImg, setUserImg] = useState("");
   const [elementWidth, setElementWidth] = useState(0);
+  const ref = useRef<HTMLLIElement>(null);
 
-  const userImg = photo ?? coveImg;
+  useEffect(() => {
+    const verifyImage = async () => {
+      const isImgValid = await verifyImageURL(photo);
+      setUserImg( isImgValid ?  photo : coveImg);
+    };
+    verifyImage();
+  });
+
+
   const phoneHref = `tel:${phone}`;
   const emailHref = `mailto:${email}`;
 

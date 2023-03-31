@@ -43,7 +43,7 @@ const abzTestApi = {
   },
   async getToken(): Promise<string | void> {
     try {
-      const response = await fetch(`${this.URL}/api/v1/tok7en`);
+      const response = await fetch(`${this.URL}/api/v1/token`);
 
       const parsedResponse = await response.json();
       if (!parsedResponse.success) {
@@ -68,7 +68,7 @@ const abzTestApi = {
       formData.append("photo", data.photo);
   
       const token = await this.getToken();
-      console.log(token);
+      console.log(data);
       if (token) {
         const response = await fetch(`${this.URL}/api/v1/users`, {
           method: "POST",

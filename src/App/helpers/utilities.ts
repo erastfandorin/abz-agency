@@ -1,23 +1,34 @@
-export const getResolutionFileImg = (
-  file: File,
-): { width: number; height: number } => {
-  const promise = new Promise(resolve => {
+interface ImgResolution {
+  width: number;
+  height: number;
+}
+
+export const getResolutionFileImg = async (file: File): Promise<ImgResolution> => {
+  return await new Promise<ImgResolution>((resolve) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
-    reader.onload = function (e) {
+    reader.onload = function (e: ProgressEvent<FileReader>) {
       const image = new Image();
 
-      if( e && e.target) {
-        image.src = e.target.result;
+      if (e && e.target) {
+        image.src = String(e.target.result);
 
         image.onload = function () {
-          resolve({ width: this.width, height: this.height });
+          resolve({ width: image.width, height: image.height });
         };
       }
     };
   });
-  return promise;
+};
+
+export const verifyImageURL = async (imageUrl: string) => {
+  return await new Promise((resolve) => {
+    const img = new Image();
+    img.src = imageUrl;
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+  });
 };
 
 export const formatPhoneNumber = (phoneNumber: string) => {
@@ -32,5 +43,5 @@ export const getTextWidth = (text: string, font?: string): number => {
     context.font = font || getComputedStyle(document.body).font;
     return context.measureText(text).width;
   }
-  return 0
+  return 0;
 };
