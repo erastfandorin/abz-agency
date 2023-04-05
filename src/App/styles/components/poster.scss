@@ -2,7 +2,7 @@
   padding-top: 40px;
   padding-bottom: 71px;
   margin-bottom: 140px;
-  background: no-repeat url("./src/App/assets/img/poster-bg-small.png") center/cover;
+  background: no-repeat url("/src/App/assets/img/poster-bg-small.png") center/cover;
   text-align: center;
   color: #ffffff;
 
@@ -15,7 +15,7 @@
     padding-bottom: 164px;
   }
   @media (min-width: $large-desktop-width) {
-    background: no-repeat url("./src/App/assets/img/poster-bg.png") center/cover;
+    background: no-repeat url("/src/App/assets/img/poster-bg.png") center/cover;
   }
 }
 .poster__wrapper {
