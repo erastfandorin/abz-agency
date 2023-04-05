@@ -4,7 +4,7 @@ import { IUserView } from "../../../interfaces/IForm";
 import { formatPhoneNumber, getTextWidth, verifyImageURL } from "../../../helpers/utilities";
 
 function User({ photo, name, email, phone, position }: IUserView) {
-  const [userImg, setUserImg] = useState("");
+  const [userImg, setUserImg] = useState(coveImg);
   const [elementWidth, setElementWidth] = useState(0);
   const ref = useRef<HTMLLIElement>(null);
 
@@ -41,7 +41,7 @@ function User({ photo, name, email, phone, position }: IUserView) {
     <li className="users__list-item card" ref={ref}>
       <ul className="card__list">
         <li className="card__photo">
-          <img src={userImg} alt="User" />
+          <img src={userImg} alt="User" width="70" height="70"/>
         </li>
         <li className="card__name tooltip">
           <span className="card__text">{name}</span>

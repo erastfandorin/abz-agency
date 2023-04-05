@@ -58,17 +58,16 @@ const abzTestApi = {
   },
   async postUser(data: IFormFields): Promise<boolean> {
     try {
-      let numberForForm = data.phone.replace(/[^0-9+]/g, "");
+      let numberWithoutHyphen = data.phone.replace(/[^0-9+]/g, "");
 
       const formData = new FormData();
       formData.append("position_id", data.position);
       formData.append("name", data.name);
       formData.append("email", data.email);
-      formData.append("phone", numberForForm);
+      formData.append("phone", numberWithoutHyphen);
       formData.append("photo", data.photo);
   
       const token = await this.getToken();
-      console.log(data);
       if (token) {
         const response = await fetch(`${this.URL}/api/v1/users`, {
           method: "POST",

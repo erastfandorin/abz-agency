@@ -10,7 +10,11 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
     const [formErrors, setErrors] = useState<IFormErrors>(validateFields);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.currentTarget;
+      let { name, value } = e.currentTarget;
+
+      if (name === "phone") {
+        value = correctPhoneNumber(value);
+      }
 
       if (name === "photo" && e.currentTarget.files) {
         setFormFields({ ...formFields, [name]: e.currentTarget.files[0] });
@@ -19,6 +23,14 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
       }
 
       setErrors({ ...formErrors, [name]: "" });
+    };
+
+    const correctPhoneNumber = (phone: string): string => {
+      let newPhone = phone;
+      if (!newPhone.startsWith("+") && newPhone.length > 0) newPhone = "+" + newPhone;
+      if (!newPhone.startsWith("+3") && newPhone.length > 1) newPhone = "+3" + newPhone.slice(1);
+      if (!newPhone.startsWith("+38") && newPhone.length > 2) newPhone = "+38" + newPhone.slice(2);
+      return newPhone;
     };
 
     const validateForm = async (): Promise<boolean> => {
@@ -99,7 +111,7 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
           if (!validatePhone(value)) {
             setErrors({
               ...formErrors,
-              [name]: "number, should start with code of Ukraine +380 and should be 12 numbers",
+              [name]: "number should be 12 numbers",
             });
             return false;
           }
