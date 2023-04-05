@@ -20,6 +20,7 @@ function Poster() {
           smooth
           offset={-140}
           duration={500}
+          href="/"
         >
           Sign up
         </Link>
