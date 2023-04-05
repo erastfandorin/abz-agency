@@ -13,7 +13,7 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
       let { name, value } = e.currentTarget;
 
       if (name === "phone") {
-        value = correctPhoneNumber(value);
+        value = autocompletePhoneNumber(value);
       }
 
       if (name === "photo" && e.currentTarget.files) {
@@ -25,7 +25,7 @@ function withFormValidate<P extends object>(WrappedComponent: React.ComponentTyp
       setErrors({ ...formErrors, [name]: "" });
     };
 
-    const correctPhoneNumber = (phone: string): string => {
+    const autocompletePhoneNumber = (phone: string): string => {
       let newPhone = phone;
       if (!newPhone.startsWith("+") && newPhone.length > 0) newPhone = "+" + newPhone;
       if (!newPhone.startsWith("+3") && newPhone.length > 1) newPhone = "+3" + newPhone.slice(1);
