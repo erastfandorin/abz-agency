@@ -21,5 +21,16 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+          data-client_id="492603187584-t3uh5k7p1gr7mro9dhihpjttog4obq5d.apps.googleusercontent.com"
+          data-callback="handleCredentialResponse">
+    </div>
+    <script>
+      function handleCredentialResponse(response) {
+        // Process the response object (e.g., send it to the server for verification)
+        console.log(response.credential);
+      }
+    </script>
   </body>
 </html>
